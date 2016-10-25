@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GNv-Dt-K3L">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="KPJ-2s-XTP">
+            <objects>
+                <tabBarController id="GNv-Dt-K3L" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="CtH-SQ-bwm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Qpu-y2-6Yi" kind="relationship" relationship="viewControllers" id="eDN-ro-yPV"/>
+                        <segue destination="egg-Yh-9yW" kind="presentation" identifier="Present Login View Controller" id="Grc-2q-7zA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOI-k4-Hh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-218" y="-152"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Fxr-mj-eHm">
+            <objects>
+                <viewController id="egg-Yh-9yW" customClass="LoginViewController" customModule="Octocat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dw7-D8-cbp"/>
+                        <viewControllerLayoutGuide type="bottom" id="djf-OE-BrV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="coY-om-DeL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login GitHub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piv-ch-ObY">
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
+                                <color key="textColor" red="0.93249207735061646" green="0.95641952753067017" blue="0.98964220285415649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFN-Rj-rAU" customClass="TexturedButton" customModule="Octocat" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="MzK-a8-ct3"/>
+                                    <constraint firstAttribute="height" constant="46" id="QRa-Tt-TDS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Login"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="normalImage" value="BlueRound"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="highlightedImage" value="BlueRoundHighlighted"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerCap">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="login:" destination="egg-Yh-9yW" eventType="touchUpInside" id="VRq-ek-s0Q"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be navigated to Safari and continue your login operation." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKH-NW-VUm">
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" red="0.7007637619972229" green="0.73660612106323242" blue="0.78238099813461304" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tfe-vW-4Sp"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.23464703559875488" green="0.25461459159851074" blue="0.27544736862182617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tfe-vW-4Sp" firstAttribute="centerX" secondItem="coY-om-DeL" secondAttribute="centerX" id="31m-AW-fQv"/>
+                            <constraint firstItem="qKH-NW-VUm" firstAttribute="leading" secondItem="coY-om-DeL" secondAttribute="leadingMargin" constant="20" id="JTu-te-RyJ"/>
+                            <constraint firstItem="piv-ch-ObY" firstAttribute="top" secondItem="Dw7-D8-cbp" secondAttribute="bottom" constant="110" id="UFO-rs-Kgr"/>
+                            <constraint firstItem="pFN-Rj-rAU" firstAttribute="centerX" secondItem="coY-om-DeL" secondAttribute="centerX" id="VDh-XJ-yJJ"/>
+                            <constraint firstItem="djf-OE-BrV" firstAttribute="top" secondItem="pFN-Rj-rAU" secondAttribute="bottom" constant="110" id="h5a-Bv-s0i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qKH-NW-VUm" secondAttribute="trailing" constant="20" id="lgD-ap-iHY"/>
+                            <constraint firstItem="piv-ch-ObY" firstAttribute="centerX" secondItem="coY-om-DeL" secondAttribute="centerX" id="tjH-Y5-abT"/>
+                            <constraint firstItem="djf-OE-BrV" firstAttribute="top" secondItem="tfe-vW-4Sp" secondAttribute="bottom" constant="114" id="wVc-Zs-IuE"/>
+                            <constraint firstItem="qKH-NW-VUm" firstAttribute="top" secondItem="piv-ch-ObY" secondAttribute="bottom" constant="60" id="zsX-0X-XxM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="indicatorView" destination="tfe-vW-4Sp" id="wq0-IK-Wtq"/>
+                        <outlet property="loginButton" destination="pFN-Rj-rAU" id="4eV-u2-XIJ"/>
+                        <segue destination="XL1-9z-oph" kind="unwind" identifier="Unwind To Repos" unwindAction="unwindInRepos:" id="1h4-b4-aeM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXv-sD-dpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="XL1-9z-oph" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="600.79999999999995" y="-647.22638680659679"/>
+        </scene>
+        <!--Repos-->
+        <scene sceneID="mIs-6h-bDH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Repos" id="Qpu-y2-6Yi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="y7r-Wp-vbX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f4Q-Cn-8Xn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="-241"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BlueRound" width="50" height="50"/>
+        <image name="BlueRoundHighlighted" width="50" height="50"/>
+    </resources>
+</document>
