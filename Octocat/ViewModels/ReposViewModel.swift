@@ -82,7 +82,7 @@ class ReposViewModel: NSObject, UITableViewDataSource {
         } else {
             cell.repoDescriptionLabel.text = "(No description)"
         }
-        cell.starCountLabel.text = "\(repoModel.forksCount ?? 0)"
+        cell.starCountLabel.text = "\(repoModel.stargazersCount ?? 0)"
         cell.langLabel.text = repoModel.language ?? "Other"
         cell.langImageView.image = badgeImage(forLanguage: repoModel.language)
         
