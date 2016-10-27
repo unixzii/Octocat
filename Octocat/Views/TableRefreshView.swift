@@ -130,7 +130,7 @@ class TableRefreshView: UIView, UIScrollViewDelegate {
             self.stateImageView2.alpha = 0
             self.stateImageView2.transform = CGAffineTransform.identity.scaledBy(x: 0, y: 0)
             self.stateImageView2.isHidden = false
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 8.0, options: [], animations: { 
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 9.0, options: [], animations: {
                 self.stateImageView2.transform = .identity
                 self.stateImageView2.alpha = 1
                 }, completion: nil)

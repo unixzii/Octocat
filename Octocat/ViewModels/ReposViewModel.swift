@@ -9,7 +9,7 @@
 import UIKit
 import OctocatKit
 
-class ReposViewModel: NSObject, UITableViewDataSource {
+class ReposViewModel: NSObject, PagedContentViewModel, UITableViewDataSource {
 
     @IBOutlet weak var view: ReposViewController!
     
@@ -23,7 +23,11 @@ class ReposViewModel: NSObject, UITableViewDataSource {
         super.init()
     }
     
-    func fetchData(reserving: Bool = false) {
+    func refreshData() {
+        fetchData(reserving: false)
+    }
+    
+    func fetchData(reserving: Bool) {
         if resource.isLoading {
             resource.stopLoading()
         }

@@ -45,7 +45,7 @@ class ToolbarPresentationSegue: UIStoryboardSegue, UIViewControllerTransitioning
         if destination == toVC {
             // Present
             containerView.addSubview(toVC.view)
-            toVC.view.frame = CGRect(x: 0, y: 65, width: containerView.frame.width, height: toVC.preferredContentSize.height)
+            toVC.view.frame = CGRect(x: 0, y: 64, width: containerView.frame.width, height: toVC.preferredContentSize.height)
             toVC.view.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -toVC.preferredContentSize.height)
             
             UIView.animate(withDuration: transitionDuration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {

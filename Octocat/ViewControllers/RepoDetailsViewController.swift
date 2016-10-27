@@ -37,7 +37,7 @@ class RepoDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.showCommits.rawValue {
             let destination = segue.destination as! CommitsViewController
-            destination.viewModel.queryBuilder.fullname = viewModel.repoModel.fullName
+            destination.commitsViewModel.queryBuilder.fullname = viewModel.repoModel.fullName
         }
     }
 

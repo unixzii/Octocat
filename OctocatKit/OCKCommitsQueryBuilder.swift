@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class OCKCommitsQueryBuilder: OCKQueryBuilder {
+public class OCKCommitsQueryBuilder: OCKPagedQueryBuilder {
     
     public var fullname: String!
-    public var page: Int = 0
+    public var page: Int = 1
     
     public init() {}
     

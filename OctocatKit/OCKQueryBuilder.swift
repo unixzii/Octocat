@@ -15,3 +15,10 @@ public protocol OCKQueryBuilder {
     var needAuthorization: Bool { get }
     
 }
+
+
+public protocol OCKPagedQueryBuilder: OCKQueryBuilder {
+    
+    var page: Int { get set }
+    
+}

@@ -10,7 +10,7 @@ import UIKit
 import OctocatKit
 import WebImage
 
-class CommitsViewModel: NSObject, UITableViewDataSource {
+class CommitsViewModel: NSObject, PagedContentViewModel, UITableViewDataSource {
 
     @IBOutlet weak var view: CommitsViewController!
     
@@ -24,28 +24,35 @@ class CommitsViewModel: NSObject, UITableViewDataSource {
         super.init()
     }
     
-    func fetchData() {
+    func refreshData() {
+        fetchData(reserving: false)
+    }
+    
+    func fetchData(reserving: Bool) {
         if resource.isLoading {
             resource.stopLoading()
         }
         
-        if resource.count == 0 {
-            //view.setLoadingIndicatorHidden(false)
-        } else {
-            //view.refreshView.startAnimation()
+        resource.isReserving = reserving
+        if !reserving {
+            view.refreshView.startAnimation()
+            
+            queryBuilder.page = 1
         }
         
         if !resource.isLoading {
             resource.startLoading { [weak self] error in
                 if error == .none {
-                    //self.view.setLoadingIndicatorHidden(true)
-                    //self.view.refreshView.stopAnimation()
+                    self?.view.refreshView.stopAnimation()
                     self?.view.tableView.reloadData()
-                    //self.view.segmentedControl.isEnabled = true
-                    //self.view.segmentedControl.isUserInteractionEnabled = true
                 }
             }
         }
+    }
+    
+    func fetchNextPage() {
+        queryBuilder.page += 1
+        fetchData(reserving: true)
     }
     
     deinit {

@@ -22,5 +22,22 @@ class SortPickerController: UIViewController {
         segmentedControl.selectedSegmentIndex = selectedIndex
         segmentedControl.addTarget(target, action: action, for: .valueChanged)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presentingViewController?.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.presentingViewController?.tabBarController?.tabBar.tintAdjustmentMode = .dimmed
+        }, completion: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presentingViewController?.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.presentingViewController?.tabBarController?.tabBar.tintAdjustmentMode = .automatic
+        }, completion: nil)
+    }
 
 }

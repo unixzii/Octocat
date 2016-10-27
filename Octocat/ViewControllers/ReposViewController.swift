@@ -9,19 +9,20 @@
 import UIKit
 import OctocatKit
 
-class ReposViewController: UIViewController {
+class ReposViewController: PagedContentViewController {
 
     static let CellIdentifier = "Cell"
     
     @IBOutlet var loadingIndicatorView: UIView!
-    @IBOutlet weak var refreshView: TableRefreshView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    @IBOutlet var viewModel: ReposViewModel!
+    var reposViewModel: ReposViewModel {
+        return viewModel as! ReposViewModel
+    }
     
     var searchController: UISearchController!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,16 +31,16 @@ class ReposViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         tableView.contentInset = .init(top: 64, left: 0, bottom: 0, right: 0)
         
-        refreshView.action = #selector(ReposViewModel.fetchData)
+        refreshView.action = #selector(ReposViewModel.refreshData)
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = viewModel
+        searchController.searchResultsUpdater = reposViewModel
         searchController.searchBar.autocapitalizationType = .none
         tableView.tableHeaderView = searchController.searchBar
         
         if OCKSessionManager.default.accessToken != nil {
-            viewModel.fetchData()
+            viewModel.fetchData(reserving: false)
         }
     }
     
@@ -65,37 +66,37 @@ class ReposViewController: UIViewController {
     @IBAction func segmentedControlChanged(_ sender: AnyObject) {        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            viewModel.queryBuilder.type = .user
+            reposViewModel.queryBuilder.type = .user
             break
         case 1:
-            viewModel.queryBuilder.type = .starred
+            reposViewModel.queryBuilder.type = .starred
             break
         default:
             break
         }
         
-        viewModel.fetchData()
+        viewModel.fetchData(reserving: false)
     }
     
     func sortPickerSegmentedControlChanged(_ sender: AnyObject) {
         switch (sender as! UISegmentedControl).selectedSegmentIndex {
         case 0:
-            viewModel.queryBuilder.sort = .created
+            reposViewModel.queryBuilder.sort = .created
             break
         case 1:
-            viewModel.queryBuilder.sort = .updated
+            reposViewModel.queryBuilder.sort = .updated
             break
         case 2:
-            viewModel.queryBuilder.sort = .pushed
+            reposViewModel.queryBuilder.sort = .pushed
             break
         case 3:
-            viewModel.queryBuilder.sort = .fullName
+            reposViewModel.queryBuilder.sort = .fullName
             break
         default:
             break
         }
         
-        viewModel.fetchData()
+        viewModel.fetchData(reserving: false)
     }
     
     func setLoadingIndicatorHidden(_ hidden: Bool) {
@@ -120,55 +121,22 @@ class ReposViewController: UIViewController {
     
     @IBAction func unwindInRepos(_ segue: UIStoryboardSegue) {
         if segue.source is LoginViewController {
-            viewModel.fetchData()
+            viewModel.fetchData(reserving: false)
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.sortPicker.rawValue {
             let destination = segue.destination as! SortPickerController
-            destination.selectedIndex = viewModel.queryBuilder.sort.index
+            destination.selectedIndex = reposViewModel.queryBuilder.sort.index
             destination.target = self
             destination.action = #selector(sortPickerSegmentedControlChanged(_:))
         }
         
         if segue.identifier == SegueIdentifier.repoDetails.rawValue {
             let destination = segue.destination as! RepoDetailsViewController
-            destination.viewModel.repoModel = viewModel.resource.get(at: tableView.indexPathForSelectedRow!.row)
+            destination.viewModel.repoModel = reposViewModel.resource.get(at: tableView.indexPathForSelectedRow!.row)
         }
     }
 
-}
-
-
-extension ReposViewController: UITableViewDelegate {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        refreshView.scrollViewWillBeginDragging(scrollView)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        refreshView.scrollViewDidScroll(scrollView)
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        refreshView.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollViewDidEndScroll(scrollView)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            scrollViewDidEndScroll(scrollView)
-        }
-    }
-    
-    func scrollViewDidEndScroll(_ scrollView: UIScrollView) {
-        if abs(scrollView.contentOffset.y + scrollView.bounds.height - scrollView.contentSize.height) < 44 {
-            viewModel.fetchNextPage()
-        }
-    }
-    
 }

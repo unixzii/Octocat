@@ -8,37 +8,28 @@
 
 import UIKit
 
-class CommitsViewController: UIViewController {
+class CommitsViewController: PagedContentViewController {
     
     static let CellIdentifier = "Cell"
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet var viewModel: CommitsViewModel!
+    var commitsViewModel: CommitsViewModel {
+        return viewModel as! CommitsViewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        automaticallyAdjustsScrollViewInsets = false
         
+        tableView.contentInset = .init(top: 64, left: 0, bottom: 0, right: 0)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
 
-        viewModel.fetchData()
+        refreshView.action = #selector(CommitsViewModel.refreshData)
+        
+        viewModel.fetchData(reserving: false)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

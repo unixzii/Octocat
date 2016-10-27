@@ -38,7 +38,7 @@ public struct RepositorySortType: RawRepresentable {
 }
 
 
-public class OCKRepositoryQueryBuilder: OCKQueryBuilder {
+public class OCKRepositoryQueryBuilder: OCKPagedQueryBuilder {
     
     public var type: RepositoryType = .user
     public var sort: RepositorySortType = .created

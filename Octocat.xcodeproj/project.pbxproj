@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA2B486C1DC252AB003BE62F /* PagedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B486B1DC252AB003BE62F /* PagedContentViewController.swift */; };
+		FA2B486E1DC252CD003BE62F /* PagedContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B486D1DC252CD003BE62F /* PagedContentViewModel.swift */; };
 		FA461DAF1DBC5B2D00BC3F57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA461DAE1DBC5B2D00BC3F57 /* AppDelegate.swift */; };
 		FA461DB41DBC5B2D00BC3F57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA461DB21DBC5B2D00BC3F57 /* Main.storyboard */; };
 		FA461DB61DBC5B2D00BC3F57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA461DB51DBC5B2D00BC3F57 /* Assets.xcassets */; };
@@ -76,6 +78,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA2B486B1DC252AB003BE62F /* PagedContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedContentViewController.swift; sourceTree = "<group>"; };
+		FA2B486D1DC252CD003BE62F /* PagedContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedContentViewModel.swift; sourceTree = "<group>"; };
 		FA461DAB1DBC5B2D00BC3F57 /* Octocat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Octocat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA461DAE1DBC5B2D00BC3F57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA461DB31DBC5B2D00BC3F57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		FA8B82721DBCB1B100636FB8 /* ImageCachePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCachePool.swift; sourceTree = "<group>"; };
 		FA8B82741DBCB9AB00636FB8 /* TableRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRefreshView.swift; sourceTree = "<group>"; };
 		FA96A9DC1DBF1BF600D179CF /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
+		FA96D3B41DC247EE00E1FB05 /* Octocat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Octocat-Bridging-Header.h"; sourceTree = "<group>"; };
 		FABE6A4F1DBCE6D1004DB1E8 /* SortPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortPickerController.swift; sourceTree = "<group>"; };
 		FABE6A521DBCE74B004DB1E8 /* ToolbarPresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarPresentationSegue.swift; sourceTree = "<group>"; };
 		FAC8C5341DBDC1A9005F780A /* OCKLoadableResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCKLoadableResource.swift; sourceTree = "<group>"; };
@@ -164,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				FA461DE61DBC72FA00BC3F57 /* Octocat.entitlements */,
+				FA96D3B11DC2468300E1FB05 /* Utilities */,
 				FA8B82711DBCB18F00636FB8 /* Services */,
 				FA461DCD1DBC683F00BC3F57 /* Configs */,
 				FA461DCA1DBC65F300BC3F57 /* Views */,
@@ -178,6 +184,7 @@
 		FA461DC01DBC5B3A00BC3F57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA96D3B41DC247EE00E1FB05 /* Octocat-Bridging-Header.h */,
 				FA461DAE1DBC5B2D00BC3F57 /* AppDelegate.swift */,
 				FA461DB51DBC5B2D00BC3F57 /* Assets.xcassets */,
 				FA461DB71DBC5B2D00BC3F57 /* LaunchScreen.storyboard */,
@@ -201,6 +208,7 @@
 			children = (
 				FABE6A511DBCE718004DB1E8 /* Segues */,
 				FA461DC81DBC64C400BC3F57 /* LoginViewController.swift */,
+				FA2B486B1DC252AB003BE62F /* PagedContentViewController.swift */,
 				FA461DC61DBC5D1900BC3F57 /* ReposViewController.swift */,
 				FABE6A4F1DBCE6D1004DB1E8 /* SortPickerController.swift */,
 				FAC8C5441DBE4010005F780A /* RepoDetailsViewController.swift */,
@@ -285,6 +293,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		FA96D3B11DC2468300E1FB05 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		FABE6A511DBCE718004DB1E8 /* Segues */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +320,7 @@
 		FAC8C53B1DBDCC82005F780A /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA2B486D1DC252CD003BE62F /* PagedContentViewModel.swift */,
 				FAC8C53C1DBDCCB0005F780A /* ReposViewModel.swift */,
 				FAC8C5461DBE40F6005F780A /* RepoDetailsViewModel.swift */,
 				FAC8C5501DBE58F8005F780A /* CommitsViewModel.swift */,
@@ -377,6 +393,7 @@
 					FA461DAA1DBC5B2D00BC3F57 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = S8ZP685HLU;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -440,10 +457,12 @@
 				FA8B82731DBCB1B100636FB8 /* ImageCachePool.swift in Sources */,
 				FABE6A531DBCE74B004DB1E8 /* ToolbarPresentationSegue.swift in Sources */,
 				FA461DCF1DBC686400BC3F57 /* Constants.swift in Sources */,
+				FA2B486C1DC252AB003BE62F /* PagedContentViewController.swift in Sources */,
 				FAC8C5411DBE22BB005F780A /* NetworkActivityIndicatorManager.swift in Sources */,
 				FAC8C5551DBE5C6B005F780A /* CommitCell.swift in Sources */,
 				FAC8C54B1DBE4874005F780A /* StackedLabel.swift in Sources */,
 				FA8B82701DBCA92A00636FB8 /* RepoCell.swift in Sources */,
+				FA2B486E1DC252CD003BE62F /* PagedContentViewModel.swift in Sources */,
 				FABE6A501DBCE6D1004DB1E8 /* SortPickerController.swift in Sources */,
 				FAC8C5511DBE58F8005F780A /* CommitsViewModel.swift in Sources */,
 				FAC8C5491DBE454D005F780A /* RepoTitleCell.swift in Sources */,
@@ -615,6 +634,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Octocat/Octocat.entitlements;
 				DEVELOPMENT_TEAM = S8ZP685HLU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -625,6 +645,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyandev.Octocat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Octocat/Octocat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -634,6 +656,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Octocat/Octocat.entitlements;
 				DEVELOPMENT_TEAM = S8ZP685HLU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -644,6 +667,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyandev.Octocat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Octocat/Octocat-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
